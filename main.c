@@ -58,8 +58,7 @@ int main(int ac, char **av)
 	int res = 0;
 	map = malloc(sizeof(t_map));
 	fd = open(av[1], O_RDONLY);
-	map->grid = malloc(1000000);
-	line = malloc(1000000);
+	map->grid = ft_calloc(1000000, 100);
 	while(res = get_next_line(fd, &line) && *line != '\0')
 	{
 		printf("l1 -> %s\n", line);
@@ -82,6 +81,12 @@ int main(int ac, char **av)
 		printf("grid -> %s\n", map->grid[i++]);
 		printf("i -> %d\n", i);
 	}
+	get_next_line(fd, &line);
+		map->grid[i] = line;
+
+	i = 0;
+	while (map->grid[i][0] != '\0')
+		printf("%s\n", map->grid[i++]);
 	printf("l1 -> %s\n", line);
 
 	return 0;
